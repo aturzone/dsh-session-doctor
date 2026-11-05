@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./dist/index.mjs",
   "bin": {
-    "session-doctor": "./dist/cli.mjs"
+    "session-doctor": "dist/cli.mjs"
   },
   "files": [
     "dist",
