@@ -1,0 +1,59 @@
+{
+  "name": "dsh-session-doctor",
+  "version": "0.1.0",
+  "description": "Read-only diagnostics for stored DeepSeek Harness session logs whose events violate the reader turn/step/scope rules.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.mjs",
+  "bin": {
+    "session-doctor": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "session",
+    "diagnostics",
+    "corruption",
+    "cordis"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.1 <0.3.0",
+    "node": ">=24.9.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.1.0",
+    "@deepseek-ai/dsh-tools": ">=0.2.2-rc.1 <0.3.0"
+  },
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "tsdown --no-config src/index.ts src/cli.ts --format esm --platform node --target node24 --clean --out-dir dist --deps.never-bundle @deepseek-ai/cordis --deps.never-bundle @deepseek-ai/dsh-tools",
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "prepare": "pnpm run build",
+    "prepack": "pnpm run build"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.1.0",
+    "@deepseek-ai/dsh-tools": "0.2.2-rc.1",
+    "@types/node": "^24.0.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
