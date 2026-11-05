@@ -1,6 +1,8 @@
 # Publishing runbook
 
-Status: prepared, **not executed**. Every step is a public side effect; run only after owner approval.
+Status: **GitHub executed 2026-11-05** (repo `aturzone/dsh-session-doctor`, topics `dsh-plugin`,
+`deepseek-harness`, `session-diagnostics`); **npm pending** — requires interactive `npm login` or an
+`NPM_TOKEN`. Steps below are retained as the executed record.
 
 ## 1. Create the repository
 
@@ -14,14 +16,7 @@ gh repo create aturzone/dsh-session-doctor --public --source=. --remote=origin \
 gh repo edit --add-topic dsh-plugin --add-topic deepseek-harness
 ```
 
-Then fill the package metadata that needs the final URL:
-
-```sh
-pnpm pkg set repository.type=git repository.url=git+https://github.com/aturzone/dsh-session-doctor.git
-pnpm pkg set homepage=https://github.com/aturzone/dsh-session-doctor#readme
-pnpm pkg set bugs.url=https://github.com/aturzone/dsh-session-doctor/issues
-git commit -am "chore: repository metadata" && git push
-```
+Package metadata (`repository`, `homepage`, `bugs`) is set from the final URL and committed.
 
 ## 2. Verify the published path before announcing
 

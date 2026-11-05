@@ -55,5 +55,13 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aturzone/dsh-session-doctor.git"
+  },
+  "homepage": "https://github.com/aturzone/dsh-session-doctor#readme",
+  "bugs": {
+    "url": "https://github.com/aturzone/dsh-session-doctor/issues"
   }
 }
