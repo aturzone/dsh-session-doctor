@@ -30,7 +30,7 @@ message payload validation, migrations, or compression framing beyond zstd.
 From npm (pre-release tag while the plugin is young):
 
 ```sh
-dsh plugin --profile web add @aturzone/dsh-session-doctor@next
+dsh plugin --profile web add @aturdana/dsh-session-doctor@next
 ```
 
 From the Git repository (runs the package `prepare` build):

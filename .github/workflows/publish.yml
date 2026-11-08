@@ -1,0 +1,25 @@
+name: publish
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: dist-tag to publish under
+        required: true
+        default: next
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install npm with trusted-publishing support
+        run: npm install -g npm@latest
+      - run: npm ci || npm install
+      - run: npm run build
+      - run: npm publish --provenance --access public --tag "${{ inputs.tag }}"
