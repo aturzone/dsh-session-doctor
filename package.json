@@ -1,5 +1,5 @@
 {
-  "name": "dsh-session-doctor",
+  "name": "@aturzone/dsh-session-doctor",
   "version": "0.1.0",
   "description": "Read-only diagnostics for stored DeepSeek Harness session logs whose events violate the reader turn/step/scope rules.",
   "type": "module",

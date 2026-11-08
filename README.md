@@ -25,10 +25,12 @@ message payload validation, migrations, or compression framing beyond zstd.
 
 ## Install
 
+> The npm name `dsh-session-doctor` is taken by another community package, so this one publishes under the `@aturzone` scope.
+
 From npm (pre-release tag while the plugin is young):
 
 ```sh
-dsh plugin --profile web add dsh-session-doctor@next
+dsh plugin --profile web add @aturzone/dsh-session-doctor@next
 ```
 
 From the Git repository (runs the package `prepare` build):
