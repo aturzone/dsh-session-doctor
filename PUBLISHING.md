@@ -18,6 +18,12 @@ gh repo edit --add-topic dsh-plugin --add-topic deepseek-harness
 
 Package metadata (`repository`, `homepage`, `bugs`) is set from the final URL and committed.
 
+## 1b. npm name collision (2026-11-08)
+
+The unscoped name `dsh-session-doctor` is already on npm (imtokenxinluo, since 2026-09, v0.2.3). This package
+therefore publishes as **`@aturzone/dsh-session-doctor`** with `publishConfig.access = public`; all install docs use
+the scoped name. Publishing still needs an npm token with 2FA bypass (owner deferred on 2026-11-06).
+
 ## 2. Verify the published path before announcing
 
 - CI green (typecheck, 9 tests, build).
