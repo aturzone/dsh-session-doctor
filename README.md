@@ -25,19 +25,30 @@ message payload validation, migrations, or compression framing beyond zstd.
 
 ## Install
 
-> The npm name `dsh-session-doctor` is taken by another community package, so this one publishes under the `@aturzone` scope.
+npm publication is pending: `@aturdana/dsh-session-doctor` is not on the registry yet. Use the Git path below.
 
-From npm (pre-release tag while the plugin is young):
+The unscoped npm name `dsh-session-doctor` is taken by another community package, so this one is scoped as
+`@aturdana/dsh-session-doctor`.
 
-```sh
-dsh plugin --profile web add @aturdana/dsh-session-doctor@next
-```
-
-From the Git repository (runs the package `prepare` build):
+From the Git repository (source install; needs git and network):
 
 ```sh
-dsh plugin --profile web add git+https://github.com/aturzone/dsh-session-doctor.git
+dsh plugin --profile web add 'git+https://github.com/aturzone/dsh-session-doctor.git#<commit>'
 ```
+
+Pin the commit you audited: pnpm installs the default-branch HEAD when the URL has no `#<commit>`.
+
+The first run stops with `ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED` because pnpm blocks the package `prepare` build.
+Copy the exact `allowBuilds` key pnpm prints into `$DSH_HOME/profiles/web/pnpm-workspace.yaml`, then re-run the same
+`add`:
+
+```yaml
+allowBuilds:
+  "@aturdana/dsh-session-doctor@https://codeload.github.com/aturzone/dsh-session-doctor/tar.gz/<commit>": true
+```
+
+That allowance executes this package's install-time build, so only install a commit whose source you trust. Once
+published, the registry path is `dsh plugin --profile web add @aturdana/dsh-session-doctor@next`.
 
 ## Use as a dsh bundle
 
@@ -73,13 +84,13 @@ session-doctor [--home <DSH_HOME>] [--sessions-root <dir>] [--json] [--all-gener
 
 ```text
 session root: /home/me/.dsh/sessions
-sessions: 12 scanned, 1 with reader-incompatible signatures
+sessions: 2 scanned, 1 with reader-incompatible signatures
 
-✗ --home-me-project--/session-8bc9…
-  file: …/session.v4.jsonl.zstd
-  events: 41, version: 4
-  - seq 22 tool/ptc-dispatch-start: turn-scope: tool/ptc-dispatch-start outside an open turn
-  - seq 23 tool/ptc-dispatch: turn-scope: tool/ptc-dispatch outside an open turn
+✗ --demo--/session-bad
+  file: …/--demo--/session-bad/session.v4.jsonl
+  events: 4, version: 4
+  - seq 2 tool/ptc-dispatch-start: turn-scope: tool/ptc-dispatch-start outside an open turn
+  - seq 3 tool/ptc-dispatch: turn-scope: tool/ptc-dispatch outside an open turn
 ```
 
 ## Limitations

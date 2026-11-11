@@ -26,7 +26,11 @@ the scoped name. Publishing still needs an npm token with 2FA bypass (owner defe
 
 ## 2. Verify the published path before announcing
 
-- CI green (typecheck, 9 tests, build).
+- CI green (typecheck, 10 tests, build).
+- 2026-11-11: the Git path was rehearsed against a scratch DSH home at `3da6efc`. The first `add` fails with
+  `ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED`; after adding the exact `allowBuilds` key pnpm prints to the profile's
+  `pnpm-workspace.yaml`, pnpm runs `prepare` + `prepack` and produces `dist/`. The installed bundle row had kept the
+  unscoped name and failed to import, so `cordis.patch.yml` now names `@aturdana/dsh-session-doctor`.
 - Fresh-install rehearsal against a scratch profile (npm/Git, not `link:`):
 
   ```sh

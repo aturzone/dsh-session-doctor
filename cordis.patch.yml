@@ -1,3 +1,3 @@
 - insert:
     - id: session-doctor
-      name: dsh-session-doctor
+      name: '@aturdana/dsh-session-doctor'
