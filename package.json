@@ -42,8 +42,8 @@
     "build": "tsdown --no-config src/index.ts src/cli.ts --format esm --platform node --target node24 --clean --out-dir dist --deps.never-bundle @deepseek-ai/cordis --deps.never-bundle @deepseek-ai/dsh-tools",
     "test": "vitest run --config vitest.config.ts",
     "typecheck": "tsc -p tsconfig.json",
-    "prepare": "pnpm run build",
-    "prepack": "pnpm run build"
+    "prepare": "npm run build",
+    "prepack": "npm run build"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "^4.1.0",
