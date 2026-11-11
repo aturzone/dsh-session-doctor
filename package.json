@@ -1,6 +1,6 @@
 {
   "name": "@aturdana/dsh-session-doctor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read-only diagnostics for stored DeepSeek Harness session logs whose events violate the reader turn/step/scope rules.",
   "type": "module",
   "license": "MIT",

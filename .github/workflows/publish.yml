@@ -20,6 +20,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install npm with trusted-publishing support
         run: npm install -g npm@latest
-      - run: npm ci || npm install
+      - run: npm install --no-audit --no-fund
       - run: npm run build
-      - run: npm publish --provenance --access public --tag "${{ inputs.tag }}"
+      - name: Publish (OIDC trusted publisher)
+        run: npm publish --provenance --access public --tag "${{ inputs.tag }}"

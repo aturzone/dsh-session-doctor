@@ -25,10 +25,14 @@ message payload validation, migrations, or compression framing beyond zstd.
 
 ## Install
 
-npm publication is pending: `@aturdana/dsh-session-doctor` is not on the registry yet. Use the Git path below.
-
-The unscoped npm name `dsh-session-doctor` is taken by another community package, so this one is scoped as
+The unscoped npm name `dsh-session-doctor` belongs to another community package, so this one is published as
 `@aturdana/dsh-session-doctor`.
+
+From npm (`next` while the plugin is young; `latest` also points at the release):
+
+```sh
+dsh plugin --profile web add @aturdana/dsh-session-doctor@next
+```
 
 From the Git repository (source install; needs git and network):
 
@@ -38,7 +42,7 @@ dsh plugin --profile web add 'git+https://github.com/aturzone/dsh-session-doctor
 
 Pin the commit you audited: pnpm installs the default-branch HEAD when the URL has no `#<commit>`.
 
-The first run stops with `ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED` because pnpm blocks the package `prepare` build.
+The first Git run stops with `ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED` because pnpm blocks the package `prepare` build.
 Copy the exact `allowBuilds` key pnpm prints into `$DSH_HOME/profiles/web/pnpm-workspace.yaml`, then re-run the same
 `add`:
 
@@ -47,8 +51,7 @@ allowBuilds:
   "@aturdana/dsh-session-doctor@https://codeload.github.com/aturzone/dsh-session-doctor/tar.gz/<commit>": true
 ```
 
-That allowance executes this package's install-time build, so only install a commit whose source you trust. Once
-published, the registry path is `dsh plugin --profile web add @aturdana/dsh-session-doctor@next`.
+That allowance executes this package's install-time build, so only install a commit whose source you trust.
 
 ## Use as a dsh bundle
 

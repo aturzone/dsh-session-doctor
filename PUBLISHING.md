@@ -1,8 +1,11 @@
 # Publishing runbook
 
 Status: **GitHub executed 2026-11-05** (repo `aturzone/dsh-session-doctor`, topics `dsh-plugin`,
-`deepseek-harness`, `session-diagnostics`); **npm pending** — requires interactive `npm login` or an
-`NPM_TOKEN`. Steps below are retained as the executed record.
+`deepseek-harness`, `session-diagnostics`); **npm published 2026-11-11** (`@aturdana/dsh-session-doctor@0.1.0`,
+dist-tags `latest` and `next`). Publishing used the npm CLI web-authentication flow: `npm login` saved a session token,
+and both the publish and the trusted-publisher setup deferred their 2FA to a browser passkey approval (authUrl + doneUrl
+polling). Trusted publisher configured 2026-11-11: type github, repository `aturzone/dsh-session-doctor`, workflow
+`publish.yml`, permissions `publish` + `stage publish`, id `32c2069f-7b71-46d1-9f6a-85aef16eb560`.
 
 ## 1. Create the repository
 
